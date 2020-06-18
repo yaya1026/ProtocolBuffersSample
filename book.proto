@@ -1,0 +1,20 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+message Book{
+    int64 id = 1;
+    string title = 2;
+    string author = 3;
+    string isbn = 4;
+    string overview = 5;
+    google.protobuf.Timestamp createdAt = 6;
+}
+
+message Books {
+    repeated Book books = 1;
+}
+
+service BookService {
+    rpc GetBooks(google.protobuf.Empty) returns (Books) {}
+}
