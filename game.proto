@@ -1,0 +1,32 @@
+syntax = "proto3";
+option go_package = "proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+message User {
+    int64 id = 1;
+    string name = 2;
+}
+
+message GameReview { 
+    int64 id = 1;
+    string title = 2;
+    string provider = 3;
+    string imageUrl = 4;
+    string comment = 5;
+    User user = 6;
+    google.protobuf.Timestamp createdAt = 7;
+}
+
+message GameReviewRequest {
+    int64 id = 1;
+}
+
+message GameReviews {
+    repeated GameReview games = 1;
+}
+
+service GameService {
+    rpc GetGameReviews(google.protobuf.Empty) returns (GameReviews) {}
+    rpc GetGameReview(GameReviewRequest) returns (GameReview) {}
+}
