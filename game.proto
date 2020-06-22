@@ -8,7 +8,8 @@ message User {
     string name = 2;
 }
 
-message GameReview { 
+message GameReview 
+{ 
     int64 id = 1;
     string title = 2;
     string provider = 3;
@@ -16,6 +17,7 @@ message GameReview {
     string comment = 5;
     User user = 6;
     google.protobuf.Timestamp createdAt = 7;
+    int32 price = 8;
 }
 
 message GameReviewRequest {
